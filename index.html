@@ -9,21 +9,32 @@
     <title>ElQuiebre Cultural</title>
     <style>
         body {
-            background-color: #2c2c2c;
+            background-color: #ebebeb;
             color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             transition: background-color 0.5s;
+            min-height: 100vh;
+            /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centro horizontalmente */
+            overflow-x: hidden;
+            /* Agregado para ocultar el scroll lateral */
         }
 
         header {
-            background: linear-gradient(to right, #2c2c2c, #1a1a1a);
-            color: #cacaca;
+            background: #b9b9b9;
+            color: #7d4d94;
             text-align: center;
             padding: 1em;
             transition: background 0.5s, color 0.5s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            width: 100%;
         }
 
         nav {
@@ -39,8 +50,10 @@
         section {
             margin: 20px;
             display: flex;
-            flex-direction: column; /* Cambiado de 'space-between' a 'column' para dispositivos móviles */
-            align-items: center; /* Alineación central para dispositivos móviles */
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            /* Ocupa el espacio restante */
         }
 
         .card {
@@ -49,89 +62,58 @@
             border-radius: 8px;
             padding: 15px;
             margin: 10px;
-            width: 80%; /* Ajustado para dispositivos móviles */
+            width: 80%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Centra horizontalmente */
+            align-items: center;
+            margin-left: 27px;
+            /* Centra verticalmente */
+
+            /* Alinea el texto a la izquierda */
         }
 
         h1,
         h2,
         h3 {
-            color: #ffdb58;
+            color: #7d4d94;
+            text-shadow: 2px 2px 4px rgba(148, 148, 148, 0.8);
+            /* Tonos neon violeta */
         }
 
         .container {
             flex: 1;
             display: flex;
-            flex-direction: column; /* Cambiado de 'space-between' a 'column' para dispositivos móviles */
-            align-items: center; /* Alineación central para dispositivos móviles */
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         .main-content {
-            flex: 1;
-            padding: 20px;
-            width: 80%; /* Ajustado para dispositivos móviles */
-        }
-
-        footer {
-            background-color: #2c2c2c;
-            color: #ffdb58;
-            text-align: center;
-            padding: 1em;
-            position: absolute;
-            bottom: 0;
             width: 100%;
-            transition: background-color 0.5s, color 0.5s;
         }
 
-        footer:hover {
-            background-color: #4c4c4c;
-            color: #ffffff;
-        }
-
-        /* Estilos del Modal */
-        .modal {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            max-width: 80%;
-            max-height: 80%;
-            background-color: #3c3c3c;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: left;
-            position: relative;
-        }
-
-        .text-container {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
+        /* Carrusel con Swiper */
         .swiper-container {
-            width: 100%;
-            max-height: 100%;
+            width: 80%;
+            max-width: 800px;
+            /* Tamaño máximo para evitar que sea demasiado ancho en pantallas grandes */
+            margin-top: 20px;
             overflow: hidden;
+            margin: 0 auto;
+            /* Centra horizontalmente */
         }
 
         .imagenCar {
             max-width: 100%;
             height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0.5, 0, 0.3);
         }
 
         .swiper-slide {
@@ -142,7 +124,7 @@
         /* Reglas de medios para dispositivos móviles */
         @media only screen and (min-width: 768px) {
             .container {
-                flex-direction: row; /* Restaurado a 'row' para dispositivos mayores a 768px */
+                flex-direction: row;
                 justify-content: space-between;
             }
 
@@ -154,6 +136,56 @@
                 width: 100%;
             }
         }
+
+        footer {
+            background-color: #2c2c2c;
+            color: #7d4d94;
+            text-align: center;
+            padding: 1em;
+            transition: background-color 0.5s, color 0.5s;
+            margin-top: auto;
+            /* Empuja el pie de página hacia la parte inferior */
+            width: 100%;
+        }
+
+        footer:hover {
+            background-color: #4c4c4c;
+            color: #ffffff;
+        }
+
+        /* Estilos para los elementos p dentro de la card */
+        .card p {
+            margin-bottom: 10px;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        li {
+            padding-bottom: 10px;
+        }
+
+        #quiebre {
+            font: normal 30px/normal "Warnes", Helvetica, sans-serif;
+            color: rgba(255, 255, 255, 1);
+            text-decoration: normal;
+            text-align: center;
+            display: inline-block;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            border: none;
+            -o-text-overflow: clip;
+            text-overflow: clip;
+            white-space: pre;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #7d4d94, 0 0 70px #7d4d94, 0 0 80px #7d4d94, 0 0 100px #7d4d94;
+            -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+            -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+            -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+            transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        }
     </style>
 </head>
 
@@ -161,69 +193,91 @@
 
     <header>
         <nav>
-            <div class="navbar-brand">El Quiebre Cultural</div>
+            <div class="navbar-brand" id="quiebre">El Quiebre Cultural</div>
         </nav>
     </header>
+    <h1
+        style="font-size: 160%; text-align: center; border-bottom-width: 10; border-bottom-color: black; margin-top: 50px; color:rgb(164, 115, 184)">
+        ¡Bienvenidos!</h1>
+    <p style="text-align: center; color: #7d4d94; padding-bottom: 8px;">_____________________________</p>
 
     <section class="container">
         <aside>
-            <h2>Próximas Funciones</h2>
-            <div id="cardContainer"></div>
+
+            <h2 style="margin-top: -5% ; color: #dfdc40c5;">CASI DESCONOCIDOS</h2>
+            <p style="text-align: center; color: #7d4d94;">_____________________________</p>
         </aside>
 
         <div class="main-content">
-            <h2>Bienvenido a El Quiebre Cultural</h2>
-            <p>Disfruta de nuestras increíbles actuaciones en un ambiente único. Sumérgete en el mundo del teatro y
-                déjate llevar por las emociones.</p>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/karen.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/catalina.png" alt="Obra Imagen">
+                    </div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/bernardo.png" alt="Obra Imagen">
+                    </div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/juancarlos.png" alt="Obra Imagen">
+                    </div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/LUCIA.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/karina.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/mauro.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/tomas.png" alt="Obra Imagen"></div>
+                </div>
+                <!-- Agrega la navegación -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <!-- Carrusel con Swiper -->
+            <div class="card">
+                <i><strong>¿Dejarías que ellos tengan acceso directo a todo lo qué pasa en tu celular?</strong></i>
+                <p style="text-align: center; padding-bottom: 10px;">_____________________________</p>
+                <p>Elenco por orden de aparición:</p>
+                <ul>
+                    <li><strong>Karen</strong>: Vera Carballo</li>
+                    <li><strong>Catalina</strong>: Agustina Gomez Vinacua</li>
+                    <li><strong>Bernardo</strong>: Lautaro Char</li>
+                    <li><strong>Juan Carlos</strong>: Joaquín Ciani</li>
+                    <li><strong>Lucia</strong>: Anyita Rivelo</li>
+                    <li><strong>Karina</strong>: Sol Garcia Jurado</li>
+                    <li><strong>Mauro</strong>: Enzo de Luca</li>
+                    <li><strong>Toto</strong>: Fran Soriano</li>
+                </ul>
 
-            <h3>Próxima Función Destacada</h3>
-            <p>Obra destacada - Fecha y Hora</p>
+                <p style="text-align: center;">_____________________________</p>
+
+                <p style="text-align: center;"><strong>Dirección:<br></strong> Estefanía Camacci</p>
+                <p style="text-align: center;"><strong>Asistencia de dirección:<br></strong> Lucía muñecas</p>
+                <p style="text-align: center;"><strong>Luces:<br></strong> Matias Pesci, Marysol Amalfi</p>
+                <p style="text-align: center;"><strong>Técnico de sonido:<br></strong> Juan Pablo Libares de Lamadrid</p>
+
+                <p style="text-align: center;">_____________________________</p>
+
+                <p style="text-align: center;"><strong>Agradecimientos:</strong></p>
+                <p>Este espectáculo cuenta con el apoyo de <strong>Cecilia Merlo</strong>, <strong>Facundo Verá</strong>
+                    y <strong>Felipa Decoraciones</strong>.</p>
+                <p style="text-align: center;">_____________</p>
+
+                <p>Agradecemos especialmente a <strong>Andrés de Andrea</strong> por su asesoramiento y por prestarnos
+                    su casa como
+                    estudio de grabación, y a todas las personas que hicieron posible las voces de los siguientes
+                    personajes:</p>
+                <ul>
+                    <li><strong>Laureana</strong>: Marysol Amalfi</li>
+                    <li><strong>Papá Catalina</strong>: Néstor Camacci</li>
+                    <li><strong>Juan Pablo</strong>: Andrés de Andrea</li>
+                    <li><strong>Iván</strong>: Lucio Garcia Jurado</li>
+                    <li><strong>Julian</strong>: Juan Pablo Libares de Lamadrid</li>
+                    <li><strong>Maxi</strong>: Nicolás Cuis</li>
+                    <li><strong>Sandra</strong>: María Paz Regino</li>
+                    <li><strong>Hombre desconocido</strong>: Octavio Frias</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 El Quiebre Cultural - Todos los derechos reservados</p>
     </footer>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>Casi Desconocidos</h2>
-            <p>Dejarías que ellos tengan acceso directo a todo lo qué pasa en tu celular?
-                <br><br>
-                Estreno: 12 de febrero
-                <br><br>
-                Dirección: @esteficamacci
-                <br><br>
-                Asistencia de dirección: @lumuniecas
-                <br><br>
-                Asistencia técnica: @juancholibares.
-            </p>
-
-            <!-- Carrusel con Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/catalina.png" alt="Obra Imagen">
-                    </div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/bernardo.png" alt="Obra Imagen">
-                    </div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/karen.png" alt="Obra Imagen"></div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/mauro.png" alt="Obra Imagen"></div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/karina.png" alt="Obra Imagen"></div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/juancarlos.png" alt="Obra Imagen">
-                    </div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/LUCIA.png" alt="Obra Imagen"></div>
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/tomas.png" alt="Obra Imagen"></div>
-                </div>
-                <!-- Agrega la paginación -->
-                <div class="swiper-pagination"></div>
-                <!-- Agrega la navegación -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
@@ -234,46 +288,7 @@
             { titulo: "Obra 3", fecha: "Fecha 3" }
         ];
 
-        // Función para crear las cards dinámicamente
-        function crearCards() {
-            const cardContainer = document.getElementById("cardContainer");
-
-            eventos.forEach((evento, index) => {
-                const card = document.createElement("div");
-                card.classList.add("card");
-
-                const titulo = document.createElement("h3");
-                titulo.textContent = evento.titulo;
-
-                const fecha = document.createElement("p");
-                fecha.textContent = evento.fecha;
-
-                card.appendChild(titulo);
-                card.appendChild(fecha);
-
-                // Añadir un efecto clic en las cards
-                card.addEventListener("click", () => {
-                    openModal();
-                });
-
-                cardContainer.appendChild(card);
-            });
-        }
-
-        // Llamada a la función para crear las cards
-        crearCards();
-
-        // Funciones para el Modal y Carrusel
-        function openModal() {
-            document.getElementById("myModal").style.display = "flex";
-            initSwiper(); // Inicializa el carrusel al abrir el modal
-        }
-
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-            destroySwiper(); // Destruye el carrusel al cerrar el modal para evitar problemas de rendimiento
-        }
-
+        // Funciones para el Carrusel con Swiper
         function initSwiper() {
             var swiper = new Swiper('.swiper-container', {
                 pagination: {
@@ -287,12 +302,10 @@
             });
         }
 
-        function destroySwiper() {
-            var swiperInstance = document.querySelector('.swiper-container.swiper-container-initialized');
-            if (swiperInstance) {
-                swiperInstance.swiper.destroy(true, true);
-            }
-        }
+        // Llamada a la función para inicializar el Carrusel
+        document.addEventListener("DOMContentLoaded", function () {
+            initSwiper();
+        });
     </script>
 
 </body>
