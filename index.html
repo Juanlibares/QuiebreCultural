@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <title>Teatro</title>
+    <style>
+        body {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s;
+        }
+
+        header {
+            background: linear-gradient(to right, #2c2c2c, #1a1a1a);
+            color: #cacaca;
+            text-align: center;
+            padding: 1em;
+            transition: background 0.5s, color 0.5s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.5em;
+        }
+
+        section {
+            margin: 20px;
+            display: flex;
+            flex-direction: column; /* Cambiado de 'space-between' a 'column' para dispositivos móviles */
+            align-items: center; /* Alineación central para dispositivos móviles */
+        }
+
+        .card {
+            background-color: #3c3c3c;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            width: 80%; /* Ajustado para dispositivos móviles */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffdb58;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column; /* Cambiado de 'space-between' a 'column' para dispositivos móviles */
+            align-items: center; /* Alineación central para dispositivos móviles */
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            width: 80%; /* Ajustado para dispositivos móviles */
+        }
+
+        footer {
+            background-color: #2c2c2c;
+            color: #ffdb58;
+            text-align: center;
+            padding: 1em;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        footer:hover {
+            background-color: #4c4c4c;
+            color: #ffffff;
+        }
+
+        /* Estilos del Modal */
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 80%;
+            max-height: 80%;
+            background-color: #3c3c3c;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            position: relative;
+        }
+
+        .text-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+        }
+
+        .imagenCar {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .swiper-slide {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Reglas de medios para dispositivos móviles */
+        @media only screen and (min-width: 768px) {
+            .container {
+                flex-direction: row; /* Restaurado a 'row' para dispositivos mayores a 768px */
+                justify-content: space-between;
+            }
+
+            .card {
+                width: 250px;
+            }
+
+            .main-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="navbar-brand">El Quiebre Cultural</div>
+        </nav>
+    </header>
+
+    <section class="container">
+        <aside>
+            <h2>Próximas Funciones</h2>
+            <div id="cardContainer"></div>
+        </aside>
+
+        <div class="main-content">
+            <h2>Bienvenido a El Quiebre Cultural</h2>
+            <p>Disfruta de nuestras increíbles actuaciones en un ambiente único. Sumérgete en el mundo del teatro y
+                déjate llevar por las emociones.</p>
+
+            <h3>Próxima Función Destacada</h3>
+            <p>Obra destacada - Fecha y Hora</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 El Quiebre Cultural - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Casi Desconocidos</h2>
+            <p>Dejarías que ellos tengan acceso directo a todo lo qué pasa en tu celular?
+                <br><br>
+                Estreno: 12 de febrero
+                <br><br>
+                Dirección: @esteficamacci
+                <br><br>
+                Asistencia de dirección: @lumuniecas
+                <br><br>
+                Asistencia técnica: @juancholibares.
+            </p>
+
+            <!-- Carrusel con Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/catalina.png" alt="Obra Imagen">
+                    </div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/bernardo.png" alt="Obra Imagen">
+                    </div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/karen.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/mauro.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/karina.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/juancarlos.png" alt="Obra Imagen">
+                    </div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/LUCIA.png" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/tomas.png" alt="Obra Imagen"></div>
+                </div>
+                <!-- Agrega la paginación -->
+                <div class="swiper-pagination"></div>
+                <!-- Agrega la navegación -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Simulación de datos para las cards
+        const eventos = [
+            { titulo: "CASI DESCONOCIDOS", fecha: "Estreno: 12/02/2024" },
+            { titulo: "Obra 2", fecha: "Fecha 2" },
+            { titulo: "Obra 3", fecha: "Fecha 3" }
+        ];
+
+        // Función para crear las cards dinámicamente
+        function crearCards() {
+            const cardContainer = document.getElementById("cardContainer");
+
+            eventos.forEach((evento, index) => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                const titulo = document.createElement("h3");
+                titulo.textContent = evento.titulo;
+
+                const fecha = document.createElement("p");
+                fecha.textContent = evento.fecha;
+
+                card.appendChild(titulo);
+                card.appendChild(fecha);
+
+                // Añadir un efecto clic en las cards
+                card.addEventListener("click", () => {
+                    openModal();
+                });
+
+                cardContainer.appendChild(card);
+            });
+        }
+
+        // Llamada a la función para crear las cards
+        crearCards();
+
+        // Funciones para el Modal y Carrusel
+        function openModal() {
+            document.getElementById("myModal").style.display = "flex";
+            initSwiper(); // Inicializa el carrusel al abrir el modal
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+            destroySwiper(); // Destruye el carrusel al cerrar el modal para evitar problemas de rendimiento
+        }
+
+        function initSwiper() {
+            var swiper = new Swiper('.swiper-container', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+        function destroySwiper() {
+            var swiperInstance = document.querySelector('.swiper-container.swiper-container-initialized');
+            if (swiperInstance) {
+                swiperInstance.swiper.destroy(true, true);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
