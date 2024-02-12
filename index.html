@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
 
     <title>ElQuiebre Cultural</title>
     <style>
         body {
             background-color: #ebebeb;
             color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Mulish', sans-serif;
             margin: 0;
             padding: 0;
             transition: background-color 0.5s;
             min-height: 100vh;
-            /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana */
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Centro horizontalmente */
             overflow-x: hidden;
-            /* Agregado para ocultar el scroll lateral */
         }
 
         header {
@@ -31,7 +31,8 @@
             text-align: center;
             padding: 1em;
             transition: background 0.5s, color 0.5s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 10px rgba(125, 77, 148, 0.8);
+            /* Ajuste de la sombra */
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-weight: bold;
             width: 100%;
@@ -43,8 +44,10 @@
             align-items: center;
         }
 
-        .navbar-brand {
+        navbar-brand {
             font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #ffffff;
         }
 
         section {
@@ -53,7 +56,6 @@
             flex-direction: column;
             align-items: center;
             flex: 1;
-            /* Ocupa el espacio restante */
         }
 
         .card {
@@ -70,12 +72,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            /* Centra horizontalmente */
             align-items: center;
             margin-left: 27px;
-            /* Centra verticalmente */
-
-            /* Alinea el texto a la izquierda */
         }
 
         h1,
@@ -83,7 +81,6 @@
         h3 {
             color: #7d4d94;
             text-shadow: 2px 2px 4px rgba(148, 148, 148, 0.8);
-            /* Tonos neon violeta */
         }
 
         .container {
@@ -98,15 +95,12 @@
             width: 100%;
         }
 
-        /* Carrusel con Swiper */
         .swiper-container {
             width: 80%;
             max-width: 800px;
-            /* Tamaño máximo para evitar que sea demasiado ancho en pantallas grandes */
             margin-top: 20px;
             overflow: hidden;
             margin: 0 auto;
-            /* Centra horizontalmente */
         }
 
         .imagenCar {
@@ -121,7 +115,6 @@
             border-radius: 8px;
         }
 
-        /* Reglas de medios para dispositivos móviles */
         @media only screen and (min-width: 768px) {
             .container {
                 flex-direction: row;
@@ -144,7 +137,6 @@
             padding: 1em;
             transition: background-color 0.5s, color 0.5s;
             margin-top: auto;
-            /* Empuja el pie de página hacia la parte inferior */
             width: 100%;
         }
 
@@ -153,7 +145,6 @@
             color: #ffffff;
         }
 
-        /* Estilos para los elementos p dentro de la card */
         .card p {
             margin-bottom: 10px;
         }
@@ -180,11 +171,27 @@
             -o-text-overflow: clip;
             text-overflow: clip;
             white-space: pre;
+
             text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #7d4d94, 0 0 70px #7d4d94, 0 0 80px #7d4d94, 0 0 100px #7d4d94;
             -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
             -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
             -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
             transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        }
+
+        #quiebre:hover {
+            color: #7d4d94;
+        }
+
+        .swiper-button-next {
+            margin-top: 30%;
+            color: #7d4d94;
+
+        }
+
+        .swiper-button-prev {
+            margin-top: 30%;
+            color: #a473b8;
         }
     </style>
 </head>
@@ -196,16 +203,15 @@
             <div class="navbar-brand" id="quiebre">El Quiebre Cultural</div>
         </nav>
     </header>
-    <h1
-        style="font-size: 160%; text-align: center; border-bottom-width: 10; border-bottom-color: black; margin-top: 50px; color:rgb(164, 115, 184)">
-        ¡Bienvenidos!</h1>
-    <p style="text-align: center; color: #7d4d94; padding-bottom: 8px;">_____________________________</p>
+    <h1 style="font-size: 2em; text-align: center; margin-top: 30px; margin-bottom: -5px; color: #a473b8;">¡Bienvenidos!
+    </h1>
+    <p style="text-align: center; color: #a473b8; ">_____________________________</p>
 
     <section class="container">
         <aside>
 
-            <h2 style="margin-top: -5% ; color: #5a38698a;">CASI DESCONOCIDOS</h2>
-            <p style="text-align: center; color: #7d4d94;">_____________________________</p>
+            <h2 style="margin-top: -5% ; color: #5a38698a; font-size: 35px; margin-top: 1%;">CASI DESCONOCIDOS</h2>
+            <p style="text-align: center; color: #7d4d94; margin-top: 1%;">_____________________________</p>
         </aside>
 
         <div class="main-content">
@@ -223,13 +229,21 @@
                     <div class="swiper-slide"><img class="imagenCar" src="./assets/mauro.png" alt="Obra Imagen"></div>
                     <div class="swiper-slide"><img class="imagenCar" src="./assets/tomas.png" alt="Obra Imagen"></div>
 
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (135).JPG" alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (138).JPG" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (135).JPG"
+                            alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (138).JPG"
+                            alt="Obra Imagen"></div>
 
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (143).JPG" alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (151).JPG" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (143).JPG"
+                            alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (151).JPG"
+                            alt="Obra Imagen"></div>
 
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (206).JPG" alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (231).JPG" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (206).JPG"
+                            alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (231).JPG"
+                            alt="Obra Imagen"></div>
 
-                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (240).JPG" alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (243).JPG" alt="Obra Imagen"></div>
+                    <div class="swiper-slide"><img class="imagenCar" src="./assets/elquiebre (240).JPG"
+                            alt="Obra Imagen"><img class="imagenCar" src="./assets/elquiebre (243).JPG"
+                            alt="Obra Imagen"></div>
 
                 </div>
                 <!-- Agrega la navegación -->
@@ -238,47 +252,55 @@
             </div>
             <!-- Carrusel con Swiper -->
             <div class="card">
-                <i><strong>¿Dejarías que ellos tengan acceso directo a todo lo qué pasa en tu celular?</strong></i>
+                <center><i><strong>¿Dejarías que ellos tengan acceso directo a todo lo qué pasa en tu
+                            celular?</strong></i></center>
                 <p style="text-align: center; padding-bottom: 10px;">_____________________________</p>
-                <p>Elenco por orden de aparición:</p>
+                <i style="color: #a473b8; font-weight: bold;">Elenco por orden de aparición:</i>
                 <ul>
-                    <li><strong>Karen</strong>: Vera Carballo</li>
-                    <li><strong>Catalina</strong>: Agustina Gómez Vinacua</li>
-                    <li><strong>Bernardo</strong>: Lautaro Chaar</li>
-                    <li><strong>Juan Carlos</strong>: Joaquín Ciani</li>
-                    <li><strong>Lucia</strong>: Anyita Rivelo</li>
-                    <li><strong>Karina</strong>: Sol García Jurado</li>
-                    <li><strong>Mauro</strong>: Enzo de Luca</li>
-                    <li><strong>Toto</strong>: Fran Soriano</li>
+                    <li><strong style="color: #a473b8;">Karen</strong>: Vera Carballo</li>
+                    <li><strong style="color: #a473b8;">Catalina</strong>: Agustina Gómez Vinacua</li>
+                    <li><strong style="color: #a473b8;">Bernardo</strong>: Lautaro Chaar</li>
+                    <li><strong style="color: #a473b8;">Juan Carlos</strong>: Joaquín Ciani</li>
+                    <li><strong style="color: #a473b8;">Lucia</strong>: Anyita Rivelo</li>
+                    <li><strong style="color: #a473b8;">Karina</strong>: Sol García Jurado</li>
+                    <li><strong style="color: #a473b8;">Mauro</strong>: Enzo de Luca</li>
+                    <li><strong style="color: #a473b8;">Toto</strong>: Fran Soriano</li>
                 </ul>
 
-                <p style="text-align: center;">_____________________________</p>
+                <p style="text-align: center; margin-top: -1%;">_____________________________</p>
 
-                <p style="text-align: center;"><strong>Dirección:<br></strong> Estefanía Camacci</p>
-                <p style="text-align: center;"><strong>Asistencia de dirección:<br></strong> Lucía Muñecas</p>
-                <p style="text-align: center;"><strong>Luces:<br></strong> Matias Pesci, Marysol Amalfi</p>
-                <p style="text-align: center;"><strong>Técnico de sonido:<br></strong> Juan Pablo Libares de Lamadrid</p>
+                <p style="text-align: center;"><strong style="color: #a473b8;">Dirección:<br></strong> Estefanía Camacci
+                </p>
+                <p style="text-align: center;"><strong style="color: #a473b8;">Asistencia de dirección:<br></strong>
+                    Lucía Muñecas</p>
+                <p style="text-align: center;"><strong style="color: #a473b8;">Luces:<br></strong> Matias Pesci, Marysol
+                    Amalfi</p>
+                <p style="text-align: center;"><strong style="color: #a473b8;">Técnico de sonido:<br></strong> Juan
+                    Pablo Libares de Lamadrid
+                </p>
 
-                <p style="text-align: center;">_____________________________</p>
+                <p style="text-align: center; margin-bottom: 5%;">_____________________________</p>
 
-                <p style="text-align: center;"><strong>Agradecimientos:</strong></p>
-                <p>Este espectáculo cuenta con el apoyo de <strong>Cecilia Merlo</strong>, <strong>Facundo Vera</strong>
-                    y <strong>Felipa Decoraciones</strong>.</p>
-                <p style="text-align: center;">_____________</p>
+                <i style="text-align: center; color: #a473b8;"><strong>Agradecimientos:</strong></i>
+                <p>Este espectáculo cuenta con el apoyo de <strong style="color: #a473b8;">Cecilia Merlo</strong>,
+                    <strong style="color: #a473b8;">Facundo Vera</strong>
+                    y <strong style="color: #a473b8;">Felipa Decoraciones</strong>.</p>
+                <p style="text-align: center; margin-top: -1%;">_____________</p>
 
-                <p>Agradecemos especialmente a <strong>Andrés de Andrea</strong> por su asesoramiento y por prestarnos
+                <p>Agradecemos especialmente a <strong style="color: #a473b8;">Andrés de Andrea</strong> por su
+                    asesoramiento y por prestarnos
                     su casa como
                     estudio de grabación, y a todas las personas que hicieron posible las voces de los siguientes
                     personajes:</p>
                 <ul>
-                    <li><strong>Laureana</strong>: Marysol Amalfi</li>
-                    <li><strong>Papá Catalina</strong>: Néstor Camacci</li>
-                    <li><strong>Juan Pablo</strong>: Andrés de Andrea</li>
-                    <li><strong>Iván</strong>: Lucio Garcia Jurado</li>
-                    <li><strong>Julian</strong>: Juan Pablo Libares de Lamadrid</li>
-                    <li><strong>Maxi</strong>: Nicolás Cuis</li>
-                    <li><strong>Sandra</strong>: María Paz Regino</li>
-                    <li><strong>Hombre desconocido</strong>: Octavio Frias</li>
+                    <li><strong style="color: #a473b8;">Laureana</strong>: Marysol Amalfi</li>
+                    <li><strong style="color: #a473b8;">Papá Catalina</strong>: Néstor Camacci</li>
+                    <li><strong style="color: #a473b8;">Juan Pablo</strong>: Andrés de Andrea</li>
+                    <li><strong style="color: #a473b8;">Iván</strong>: Lucio Garcia Jurado</li>
+                    <li><strong style="color: #a473b8;">Julian</strong>: Juan Pablo Libares de Lamadrid</li>
+                    <li><strong style="color: #a473b8;">Maxi</strong>: Nicolás Cuis</li>
+                    <li><strong style="color: #a473b8;">Sandra</strong>: María Paz Regino</li>
+                    <li><strong style="color: #a473b8;">Hombre desconocido</strong>: Octavio Frias</li>
                 </ul>
             </div>
         </div>
@@ -290,13 +312,6 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        // Simulación de datos para las cards
-        const eventos = [
-            { titulo: "CASI DESCONOCIDOS", fecha: "Estreno: 12/02/2024" },
-            { titulo: "Obra 2", fecha: "Fecha 2" },
-            { titulo: "Obra 3", fecha: "Fecha 3" }
-        ];
-
         // Funciones para el Carrusel con Swiper
         function initSwiper() {
             var swiper = new Swiper('.swiper-container', {
